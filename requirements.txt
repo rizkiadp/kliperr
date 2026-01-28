@@ -9,3 +9,8 @@ torch
 tqdm
 colorama
 python-dotenv
+customtkinter
+pillow
+packaging
+requests
+imageio-ffmpeg
