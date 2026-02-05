@@ -1,0 +1,8 @@
+{
+    "num_clips": 5,
+    "duration_max": 60,
+    "font_size": 24,
+    "font_family": "Arial-Bold",
+    "font_color": "#FFD700",
+    "font_pos_y": 0.75
+}
