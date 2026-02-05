@@ -481,6 +481,9 @@ class KliperrApp(ctk.CTk):
         self.gallery_frame.pack(fill="both", expand=True)
 
     def log(self, message, type="info"):
+        self.after(0, self._log_safe, message, type)
+
+    def _log_safe(self, message, type="info"):
         box = self.dashboard_frame.log_box
         box.configure(state="normal")
         prefix = "[ERROR] " if type == "error" else "[PASS] " if type == "success" else ""

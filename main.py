@@ -179,16 +179,20 @@ class KliperrGenerator:
     def analyze_hooks_with_groq(self, transcript_text, num_clips):
         if self.stop_requested: return []
         
-        safe_text = transcript_text[:25000]
+        # Limit user to ~12k chars to avoid TPM limit (approx 3-4k tokens + prompt)
+        safe_text = transcript_text[:12000]
         self.log(f"Mengirim {len(safe_text)} karakter ke AI Groq...")
 
         prompt = f"""
-        You are a professional Video Editor. Analyze this transcript.
+        You are a professional Video Editor specializing in viral gossip and drama. Analyze this transcript.
         Find exactly {num_clips} viral segments for TikTok (30-60 seconds each).
         
         CRITERIA:
-        1. Must have a strong hook.
-        2. Must be self-contained context.
+        1. PRIORITIZE GOSIP PANAS (HOT GOSSIP), DRAMA, CONTROVERSY, and SHOCKING REVELATIONS.
+        2. Look for emotional moments, arguments, or secrets being revealed.
+        3. Must have a strong viral hook.
+        4. Must be self-contained context.
+        5. Ignore boring, educational, or flat parts.
         
         TRANSCRIPT:
         {safe_text} ... (truncated)
